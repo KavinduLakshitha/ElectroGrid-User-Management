@@ -9,7 +9,7 @@ $(document).ready(function()
 
 // SAVE ==============================================
 
-$(document).on("click", "#btnSave", function(event) 
+$(document).on("click", ".btnSave", function(event) 
 {	
 	// Clear alerts---------------------
 	$("#alertSuccess").text("");

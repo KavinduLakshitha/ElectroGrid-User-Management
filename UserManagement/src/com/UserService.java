@@ -39,6 +39,7 @@ public class UserService {
 			@FormParam("userEmail") String userEmail,
 			@FormParam("userPhone") String userPhone, 
 			@FormParam("userAcc_no") String userAcc_no) {
+		
 		String output = userObj.insertUser(userName, userEmail, userPhone, userAcc_no);
 		return output;
 	}
@@ -47,23 +48,17 @@ public class UserService {
 	
 	@PUT
 	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
 
-	public String updateUser(String userData) {
-
-		// Convert the input string to a JSON object
-		JsonObject userObject = new JsonParser().parse(userData).getAsJsonObject();
-
-		// Read the values from the JSON object
-		String userID = userObject.get("userID").getAsString();
-		String userName = userObject.get("userName").getAsString();
-		String userEmail = userObject.get("userEmail").getAsString();
-		String userPhone = userObject.get("userPhone").getAsString();
-		String userAcc_no = userObject.get("userAcc_no").getAsString();
+	public String updateUser(
+			@FormParam("userID") String userID,
+			@FormParam("userName") String userName,
+			@FormParam("userEmail") String userEmail,
+			@FormParam("userPhone") String userPhone, 
+			@FormParam("userAcc_no") String userAcc_no) {
 		
 		String output = userObj.updateUser(userID, userName, userEmail, userPhone, userAcc_no);
-
 		return output;
 	}
 	
@@ -74,6 +69,7 @@ public class UserService {
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String deleteUser(String userData) {
+		
 		// Convert the input string to an XML document
 		Document doc = Jsoup.parse(userData, "", Parser.xmlParser());
 
