@@ -1,6 +1,6 @@
 package com;
 
-import model.User;
+import com.User;
 
 //For REST Service
 import javax.ws.rs.*;
